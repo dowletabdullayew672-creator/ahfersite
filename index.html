@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahmet Can Dündar & Feride Özdinç Fan Sitesi</title>
+  <style>
+    /* ===== Genel Ayarlar ===== */
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fef9f3, #ffe0d6);
+      color:#222;
+      scroll-behavior: smooth;
+    }
+    header {
+      background-color:#e74c3c;
+      color:white;
+      padding:35px 0;
+      text-align:center;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+    h1 {font-size:3rem; font-weight:800;}
+    h2 {color:#e74c3c; font-size:2.2rem; margin-bottom:30px; text-align:center;}
+    p {font-size:1.1rem; line-height:1.7;}
+
+    /* ===== Butonlar ===== */
+    .nav-btn {
+      background-color:#ff7043;
+      color:white;
+      padding:14px 30px;
+      border:none;
+      border-radius:50px;
+      margin:10px;
+      font-weight:700;
+      font-size:1rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+      transition: 0.3s;
+    }
+    .nav-btn:hover {
+      background-color:#e74c3c;
+      transform:translateY(-4px);
+      box-shadow: 0 7px 20px rgba(0,0,0,0.25);
+    }
+
+    /* ===== Bölümler ===== */
+    section {
+      padding:70px 20px;
+      max-width:1200px;
+      margin:auto;
+      display:none;
+    }
+    section.active {display:block;}
+
+    /* ===== Slider ===== */
+    .slider {
+      width: 100%;
+      max-width: 700px;
+      margin: 20px auto;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .slides {
+      display: flex;
+      width: 300%;
+      animation: slide 12s infinite;
+    }
+    .slides img {
+      width: 100%;
+      border-radius: 15px;
+    }
+    @keyframes slide {
+      0% { transform: translateX(0%); }
+      33% { transform: translateX(-100%); }
+      66% { transform: translateX(-200%); }
+      100% { transform: translateX(0%); }
+    }
+
+    /* ===== Fan mesajı ===== */
+    .fan-message {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #fff5f5;
+      border-left: 6px solid #ff6f61;
+      border-radius: 10px;
+      font-size: 18px;
+      line-height: 1.7;
+      text-align: center;
+      color: #444;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    }
+    .fan-message strong {
+      color: #ff6f61;
+      font-size: 20px;
+    }
+
+    /* ===== Video Grid ===== */
+    .video-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(320px,1fr));
+      gap:25px;
+    }
+    .video-grid iframe {
+      width:100%;
+      height:240px;
+      border-radius:20px;
+      box-shadow:0 5px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .video-grid iframe:hover {transform:scale(1.04);}
+
+    /* ===== Foto Galeri ===== */
+    .photo-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+      gap:25px;
+    }
+    .photo-item {
+      position:relative;
+      overflow:hidden;
+      border-radius:20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+    .photo-item img {
+      width:100%;
+      display:block;
+      transition: transform 0.6s, filter 0.6s;
+    }
+    .photo-item span {
+      position:absolute;
+      bottom:12px;
+      left:12px;
+      color:white;
+      background-color:rgba(0,0,0,0.65);
+      padding:8px 14px;
+      border-radius:10px;
+      font-weight:700;
+    }
+    .photo-item:hover img {transform:scale(1.12); filter:brightness(1.1);}
+
+    /* ===== Music ===== */
+    .music-list {
+      list-style:none;
+      padding:0;
+      text-align:center;
+    }
+    .music-list li {margin:14px 0;}
+    .music-list a {
+      color:#e74c3c;
+      text-decoration:none;
+      font-weight:700;
+      font-size:1.15rem;
+    }
+    .music-list a:hover {text-decoration:underline;}
+
+    /* ===== İletişim ===== */
+    .contact-form input, .contact-form textarea {
+      width:100%;
+      padding:16px;
+      margin:12px 0;
+      border-radius:15px;
+      border:1px solid #ccc;
+      font-size:1rem;
+      box-shadow: inset 0 3px 6px rgba(0,0,0,0.07);
+    }
+    .contact-form button {
+      width:100%;
+      padding:16px;
+      font-size:1.15rem;
+      border-radius:50px;
+      border:none;
+      background-color:#ff7043;
+      color:white;
+      font-weight:700;
+      cursor:pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+    .contact-form button:hover {
+      background-color:#e74c3c;
+      transform:translateY(-3px);
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background-color:#e74c3c;
+      color:white;
+      text-align:center;
+      padding:30px 0;
+      font-weight:700;
+      font-size:1rem;
+      box-shadow: 0 -5px 12px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width:768px) {
+      h1 {font-size:2.2rem;}
+      h2 {font-size:1.8rem;}
+      .video-grid iframe {height:200px;}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>AhFer Fan Sitesi</h1>
+</header>
+
+<!-- Ana Sayfa -->
+<section id="home" class="active">
+  <h2>💖 AhFer Fanları Burada 💖</h2>
+
+  <!-- Foto Slider -->
+  <div class="slider">
+    <div class="slides">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0YjRFXgud0vwymWnMSQLJFDx4PraH7T4C3A&s" alt="AhFer">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwOEn1NlcDrMOBhNUp9oPDEmRHCdEu8PVyOg&s" alt="AhFer">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6u72Kfy0GwSB2zvm_kffW71Bh9vOCS0IuNQ&s" alt="AhFer Edit 3">
+    </div>
+  </div>
+
+  <!-- Duygusal Yazı -->
+  <div class="fan-message">
+    <p>
+      <strong>“AhFer, siz yan yana olduğunuzda hepimiz için hayat daha güzel…”</strong><br><br>
+      Sizin gülüşleriniz, birlikte çıkardığınız anılar, sadece sizin değil, hepimizin kalbine dokundu.  
+      Biliyoruz ki bazen yollar ayrı düşer, bazen kalpler kırılır… ama gerçek dostluk ve sevgi her şeyin üstesinden gelir.  
+      Biz fanlarınız, sizleri birlikte görmekten güç alıyoruz.  
+      <br><br>
+      💌 <em>Lütfen barışın, çünkü AhFer yan yana olunca dünya çok daha anlamlı.</em>
+    </p>
+  </div>
+
+  <!-- Navigasyon -->
+  <div class="home-buttons" style="text-align:center;">
+    <button class="nav-btn" onclick="showSection('videos')">Videolar</button>
+    <button class="nav-btn" onclick="showSection('photos')">Foto Galeri</button>
+    <button class="nav-btn" onclick="showSection('music')">Music</button>
+    <button class="nav-btn" onclick="showSection('iletisim')">İletişim</button>
+  </div>
+</section>
+
+<!-- Videolar -->
+<section id="videos">
+  <h2>Videolar</h2>
+  <div class="video-grid">
+    <iframe src="https://www.youtube.com/embed/srYP9DwfnCU" frameborder="0" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/aVqADHXuzbI" frameborder="0" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/j46SY352CNQ" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <div style="text-align:center; margin-top:20px;">
+    <button class="nav-btn" onclick="showSection('home')">Ana Sayfa</button>
+  </div>
+</section>
+
+<!-- Foto Galeri -->
+<section id="photos">
+  <h2>Foto Galeri</h2>
+  <div class="photo-grid">
+  </div> class="photo-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbuwUvb3FYn0fqY22CUb4Aae5eiau6Cz6xGA&s" alt="Ahmet can dundar"><span>Ahmet </span></div>
+    <div class="photo-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4ep8IGIqt-mHEI37FtUR1ZaUldJmk1wGe0w&s" alt="Feride Özdinç"><span>Feride</span></div>
+    <div class="photo-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUb4Z6HSMWLAKN3QesoW7mfeWCRyIm09_75Q&s" alt="Birlikte"><span>AhFer</span></div>
+  </div>
+  <div style="text-align:center; margin-top:20px;">
+    <button class="nav-btn" onclick="showSection('home')">Ana Sayfa</button>
+  </div>
+</section>
+
+<!-- Music -->
+<section id="music">
+  <h2>Ahmet Can Dündar Music</h2>
+  <ul class="music-list">
+    <li><a href="https://open.spotify.com/track/0SV5HWv1U5BRncl8mMCDX4" target="_blank">Tattim ölümi</a></li>
+    <li><a href="https://open.spotify.com/track/64oVpf6hLIQoCkrdBaEREN" target="_blank">Keşke Tanimasaydim</a></li>
+    <li><a href="https://open.spotify.com/track/3LkOxpZy032XnmkqKh4H4J" target="_blank">Onsuz aşk</a></li>
+    <li><a href="https://open.spotify.com/track/08bbnpASal4OjMUs8noEUq" target="_blank">Bana onlar gibi davranma</a></li>
+  </ul>
+  <div style="text-align:center; margin-top:20px;">
+    <button class="nav-btn" onclick="showSection('home')">Ana Sayfa</button>
+  </div>
+</section>
+
+<!-- İletişim -->
+<section id="iletisim">
+  <h2>İletişim</h2>
+  <form class="contact-form" action="sendmail.php" method="POST">
+    <input type="text" name="name" placeholder="Adınız" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <textarea name="message" rows="5" placeholder="Mesajınız" required></textarea>
+    <button type="submit">Gönder</button>
+  </form>
+  <div style="text-align:center; margin-top:20px;">
+    <button class="nav-btn" onclick="showSection('home')">Ana Sayfa</button>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Ahmet Can Dündar & Feride Özdinç Fan Sitesi</p>
+</footer>
+
+<script>
+  function showSection(id) {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+</script>
+
+</body>
+</html>
